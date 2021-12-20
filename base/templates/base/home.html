@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+    <h1>This is home...</h1>
+
+    <div>
+        <div>
+            {% for room in rooms %}
+            <div>
+                <h6>{{room.id}} = <a href="{% url 'room' room.id %}">{{room.name}}</a></h6>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
