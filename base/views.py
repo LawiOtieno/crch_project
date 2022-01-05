@@ -46,7 +46,7 @@ def logoutUser(request):
     return redirect('home')
 
 def registerPage(request):
-    page = 'register' # not needed
+    # # page = 'register' # not needed
 
     form = UserCreationForm()
 
@@ -64,7 +64,7 @@ def registerPage(request):
         else:
             messages.error(request, 'Error occurred during registration! 😟')
 
-    context ={'page':page, 'form':form}
+    context ={'form':form}
     return render(request, 'base/login_register.html', context)
 
 
