@@ -46,5 +46,16 @@
                 {% endfor %}
             </div>
         </div>
+
+        <div>
+            <h3>Gok Motimre Machiegni (Recent Activities)</h3>
+            <hr>
+            
+            {% for message in room_messages %}
+                <div>
+                    <small>@{{mesage.user}} {{message.created|timesince}}</small>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

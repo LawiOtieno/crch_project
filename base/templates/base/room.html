@@ -8,5 +8,21 @@
     <div class="comment-wrapper">
         <h4>Weche/Conversation</h4>
         <hr>
+        {% for message in room_messages %}
+            <div>
+                <small>@{{message.user}} {{message.created|date}} ({{message.created|timesince}} ago.)</small>
+                <p>{{message.body}}</p>
+                <hr>
+            </div>
+        {% endfor %}
     </div>
+
+    {% if request.user.is_authenticated %}
+    <div class="comment-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="body" placeholder="Ndik wach mari kae (Write your message)..." id="">
+        </form>
+    </div>
+    {% endif %}
 {% endblock %}
