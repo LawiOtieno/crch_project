@@ -13,18 +13,7 @@
 
     <div class="home-container">
         <div>
-            <h3>Church Topics</h3>
-            <hr>
-
-            <div>
-                <a href="{% url 'home' %}">All</a>
-            </div>
-
-            {% for topic in topics %}
-                <div>
-                    <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
-                </div>
-            {% endfor %}
+            {% include 'base/topics_component.html' %}
         </div>
 
         <div>
