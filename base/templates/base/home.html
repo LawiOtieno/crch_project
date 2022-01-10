@@ -48,15 +48,23 @@
             </div>
         </div>
 
-            <div>
-                <h3>Gik Machiegni (Recent Activities)</h3>
-                <hr>
-                
-                {% for message in room_messages %}
-                    <div>
-                        <small>@{{message.user}} - {{message.created|timesince}} ago.</small>
-                    </div>
-                {% endfor %}
-            </div>
+        <div>
+            <h3>Gik Machiegni (Recent Activities)</h3>
+            <hr>
+            
+            {% for message in room_messages %}
+                <div>
+                    <small>@{{message.user}} - {{message.created|timesince}} ago.</small>
+                    <small>Ondiko ei "{{message.room}}"</small>
+
+                    <p>{{message}}</p>
+
+                    {% if request.user == message.user %}
+                        <a href="{% url 'delete-message' message.id %}">Delete</a>
+                    {% endif %}
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
