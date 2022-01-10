@@ -146,3 +146,18 @@ def deleteRoom(request, pk):
         return redirect('home')
     
     return render(request, 'base/delete.html', {'obj':room})
+
+
+@login_required(login_url='login')
+def deleteMessage(request, pk):
+    message = Message.objects.get(id=pk)
+
+    if request.user != message.user:
+        return HttpResponse('You are not allowed to delete this message!')
+
+    if request.method == 'POST':
+        message.delete()
+        return redirect('home')
+    
+    return render(request, 'base/delete.html', {'obj':message})
+
